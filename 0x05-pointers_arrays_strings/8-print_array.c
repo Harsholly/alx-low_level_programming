@@ -18,7 +18,6 @@ int i = 0;
 
 	if(i < n - 1)
 		printf (", ");
-
 	}
-	putchar('\n');
+	putchar ('\n');
 }
