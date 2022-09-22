@@ -23,7 +23,7 @@ void print_buffer(char *b, int size)
 				if (k % 2 == 0)
 					printf(" ");
 				if (k < size)
-					printf("%.2x", *(b + k)); 
+					printf("%.2x", *(b + k));
 				else
 					printf("  ");
 			}
@@ -34,7 +34,7 @@ void print_buffer(char *b, int size)
 					break;
 				if (*(b + l) < 32 || *(b + l) > 126)
 					printf("%c", '.');
-				else 
+				else
 					printf("%c", *(b + l));
 			}
 			printf("\n");
