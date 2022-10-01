@@ -1,57 +1,67 @@
 #include <stdio.h>
 #include <stdlib.h>
-/**
- * isInteger - checks if s is an integer
- * @s: string to check
- * Return: 0 or 1
- */
-
-int isInteger(const char *s)
-{
-	int i = 0;
-
-	while (s[i] != '\0')
-	{
-		if (s[i] < '0' || s[i] > '9')
-			return (0);
-		i++
-	}
-	return (1);
-}
 
 /**
- * main - adds positive numbers
- * @argc: int
- * @argv: list
- * Return: 0
+ * main - prints the min num of coins to make change for an amount of money
+ *
+ * @argc: argument count
+ * @argv: argument vector
+ * Return: int
  */
-
-int main(int argc, char const *argv[])
+int main(int argc, char *argv[])
 {
-	int i = 0, coinUsed = 0, coin = 0;
-	int coins[] = {25, 10, 5, 2, 1};
+	unsigned int count = 0;
 
 	if (argc != 2)
 	{
 		printf("Error\n");
 		return (1);
 	}
-	if (isInteger(argv[1]))
+	else if (atoi(argv[1]) < 0)
 	{
-		i = atoi(argv[1]);
-		while (i > 0 && coin <= 4)
-		{
-			if (i >= coins[coin])
-			{
-				i -= coins[coin];
-				coinUsed++;
-			}
-			else
-			{
-				coin++;
-			}
-		}
+		printf("%d\n", 0);
+		return (0);
 	}
-	printf("%i\n", coinUsed);
+	count = coin_count(count, atoi(argv[1]));
+	printf("%d\n", count);
 	return (0);
+}
+
+/**
+ * coin_count - counts the min coins needed for change
+ *
+ * @count: int to count coins
+ * @num: argv[1] changed to int
+ * Return: int
+ */
+unsigned int coin_count(unsigned int count, int num)
+{
+	unsigned int sum = 0;
+
+	while (!(sum + 25 > (unsigned int)num))
+	{
+		sum += 25;
+		count++;
+	}
+	while (!(sum + 10 > (unsigned int)num))
+	{
+		sum += 10;
+		count++;
+	}
+	while (!(sum + 5 > (unsigned int)num))
+	{
+		sum += 5;
+		count++;
+	}
+	while (!(sum + 2 > (unsigned int)num))
+	{
+		sum += 2;
+		count++;
+	}
+	while (!(sum + 1 > (unsigned int)num))
+	{
+		sum += 1;
+		count++;
+	}
+	return (count);
 }
